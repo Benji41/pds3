@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "322363624680",
+    "firebase_url": "https://covidamigo-pds3-default-rtdb.firebaseio.com",
+    "project_id": "covidamigo-pds3",
+    "storage_bucket": "covidamigo-pds3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322363624680:android:44522092e585f700e78d5d",
+        "android_client_info": {
+          "package_name": "com.benjaminreynoso.covidamigopds3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322363624680-qn3r6k57l2ertj0eo4hletbnhp13hopa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.benjaminreynoso.covidamigopds3",
+            "certificate_hash": "28d013d7fd679e66c4f04f9eeac924955136c652"
+          }
+        },
+        {
+          "client_id": "322363624680-982dosqvabvgp48tpvs6n9eg8ftd3j26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATdXSLq0mG-qsYdTtVIRmPnjXb7TNqZDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322363624680-982dosqvabvgp48tpvs6n9eg8ftd3j26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322363624680:android:bd35feadd911f806e78d5d",
+        "android_client_info": {
+          "package_name": "com.equipoDinamita.covidAmigo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322363624680-982dosqvabvgp48tpvs6n9eg8ftd3j26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATdXSLq0mG-qsYdTtVIRmPnjXb7TNqZDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322363624680-982dosqvabvgp48tpvs6n9eg8ftd3j26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322363624680:android:e4bf45e463a64852e78d5d",
+        "android_client_info": {
+          "package_name": "com.example.covidamigopds3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322363624680-982dosqvabvgp48tpvs6n9eg8ftd3j26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATdXSLq0mG-qsYdTtVIRmPnjXb7TNqZDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322363624680-982dosqvabvgp48tpvs6n9eg8ftd3j26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
