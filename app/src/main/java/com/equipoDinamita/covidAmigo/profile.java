@@ -14,12 +14,18 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
     }
 
+
+    public void manual(View view){
+
+        //Intent i = new Intent(this, )
+
+    }
     public void misEventos(View view){
         Intent i = new Intent(this, mis_eventos.class);
         startActivity(i);
     }
     public void menu(View view){
-        Intent i = new Intent(this, mis_eventos.class);
+        Intent i = new Intent(this, menu.class);
         startActivity(i);
     }
 

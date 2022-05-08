@@ -17,8 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //tv = findViewById(R.id.forgotPassword);
-        //tv2 = findViewById(R.id.register);
+        button = findViewById(R.id.signIn);
+
+        tv = findViewById(R.id.forgotPassword);
+        tv2 = findViewById(R.id.register);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*tv.setOnClickListener(new View.OnClickListener() {
+        tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -45,7 +47,12 @@ public class MainActivity extends AppCompatActivity {
                 sigV3();
 
             }
-        });*/
+        });
+
+
+        if(getIntent().getBooleanExtra("EXIT",false)){
+            finish();
+        }
 
     }
 

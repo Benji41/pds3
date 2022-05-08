@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CovidAmigo">
         <activity
+            android:name=".acerca_del_equipo"
+            android:exported="false" />
+        <activity
             android:name=".register_user"
             android:exported="false" />
         <activity

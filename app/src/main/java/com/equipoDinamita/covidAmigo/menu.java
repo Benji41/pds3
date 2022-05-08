@@ -14,6 +14,12 @@ public class menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
     }
 
+    public void ventanaInfo(View view){
+
+        Intent i = new Intent(this, acerca_del_equipo.class);
+        startActivity(i);
+
+    }
     public void sigVentana(View view){
 
         Intent sig = new Intent(this, epd.class);
@@ -21,9 +27,12 @@ public class menu extends AppCompatActivity {
 
     }
 
-    public void salir(View view){
+    public void exit(View view){
 
-        System.exit(0);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.putExtra("EXIT", true);
+        startActivity(i);
     }
 
     public void misEventos(View view){

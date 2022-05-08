@@ -7,14 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class epd extends AppCompatActivity {
+public class acerca_del_equipo extends AppCompatActivity {
 
     Button button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_epd);
+        setContentView(R.layout.activity_acerca_del_equipo);
 
-        button = findViewById(R.id.regresar);
+        button = findViewById(R.id.reg);
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,7 +25,6 @@ public class epd extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void sigV(){

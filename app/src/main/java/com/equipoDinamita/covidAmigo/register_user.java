@@ -9,14 +9,24 @@ import android.widget.Button;
 
 public class register_user extends AppCompatActivity {
 
-    Button button;
+    Button buttonBack, buttonRegister;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
 
-        button = findViewById(R.id.registerUser);
+        buttonBack = findViewById(R.id.regresar);
+        buttonRegister = findViewById(R.id.registerUser);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Accionar registro
+
+            }
+        });
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
