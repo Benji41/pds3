@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Covid amigo</string>
+    <string name="app_name">CovidAmigoPDS3</string>
+    <string name="be">Eventos</string>
+    <string name="me">Mis eventos</string>
+    <string name="cya">Cuentas y autenticación</string>
+    <string name="ce">Crear eventos</string>
+    <string name="ac">Alerta covid</string>
+    <string name="subT_epd">Eventos próximos disponibles</string>
+    <string name="p1">¿Ha sentido fiebre?</string>
+    <string name="p2">¿Ha tenido tos?</string>
+    <string name="p3">¿Ha sentido problemas para respirar?</string>
+    <string name="p4">¿Ha sentido dolor de garganta?</string>
+    <string name="p5">¿Ha sentido pérdida del olfato?</string>
 </resources>
