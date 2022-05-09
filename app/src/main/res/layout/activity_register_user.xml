@@ -38,7 +38,7 @@
             android:layout_marginTop="2dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Nombre" />
+            android:hint="Nombre" />
 
         <EditText
             android:id="@+id/apellido"
@@ -48,7 +48,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Apellido" />
+            android:hint="Apellido" />
 
         <EditText
             android:id="@+id/edad"
@@ -58,7 +58,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Edad" />
+            android:hint="Edad" />
 
         <EditText
             android:id="@+id/email"
@@ -68,7 +68,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Correo Electrónico" />
+            android:hint="Correo Electrónico" />
 
         <EditText
             android:id="@+id/pass"
@@ -78,7 +78,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Contraseña" />
+            android:hint="Contraseña" />
 
         <EditText
             android:id="@+id/pass2"
@@ -88,7 +88,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Confirmar Contraseña" />
+            android:hint="Confirmar Contraseña" />
 
         <Button
             android:id="@+id/registerUser"
