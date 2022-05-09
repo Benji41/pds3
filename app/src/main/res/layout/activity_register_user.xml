@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register_user">
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Covid Amigo"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="320dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Nombre" />
+
+        <EditText
+            android:id="@+id/apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nombre"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Apellido" />
+
+        <EditText
+            android:id="@+id/edad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/apellido"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Edad" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edad"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Correo Electrónico" />
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/email"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Contraseña" />
+
+        <EditText
+            android:id="@+id/pass2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pass"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Confirmar Contraseña" />
+
+        <Button
+            android:id="@+id/registerUser"
+            android:layout_width="150dp"
+            android:layout_height="74dp"
+            android:layout_below="@+id/pass2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="170dp"
+            android:layout_marginBottom="3dp"
+            android:text="Registrarse" />
+
+        <Button
+            android:id="@+id/regresar"
+            android:layout_width="150dp"
+            android:layout_height="74dp"
+            android:layout_below="@+id/pass2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="169dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="3dp"
+            android:text="Regresar" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/a0"
+    tools:context=".menu"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/covidfsc" />
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="450dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <Button
+            android:id="@+id/be"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:background="@color/a3"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:onClick="sigVentana"
+            android:text="@string/be"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/bme"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/be"
+            android:layout_marginTop="30dp"
+            android:background="@color/a3"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:onClick="misEventos"
+            android:text="@string/me"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/bac"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/bme"
+            android:layout_marginTop="30dp"
+            android:background="@color/a3"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="@string/ac"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/bcya"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/bac"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@color/a3"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:onClick="ventanaPerfil"
+            android:text="@string/cya"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/bau"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/bcya"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@color/a3"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:onClick="ventanaInfo"
+            android:text="@string/au"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/salir"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/bau"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@color/a3"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:onClick="exit"
+            android:text="salir"
+            android:textSize="25dp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
