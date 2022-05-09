@@ -3,19 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_acerca_del_equipo.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_cuestionario.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_epd.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_forgot_password.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_menu.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_mis_eventos.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_profile.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_qr.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/activity_register_user.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/dialog.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Soqui/Documents/2022-1/PDS3/aca/pds3/app/src/main/res/layout/item.xml" value="0.27291666666666664" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_acerca_del_equipo.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_cuestionario.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_epd.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_forgot_password.xml" value="0.3546875" />
         <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_menu.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_mis_eventos.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_profile.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_qr.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/activity_register_user.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/dialog.xml" value="0.3546875" />
+        <entry key="..\:/dev/ANDROID/pds3/app/src/main/res/layout/item.xml" value="0.3546875" />
       </map>
     </option>
   </component>
