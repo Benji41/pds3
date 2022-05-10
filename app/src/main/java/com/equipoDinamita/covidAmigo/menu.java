@@ -9,13 +9,22 @@ import android.widget.Toast;
 
 public class menu extends AppCompatActivity {
     String email;
+    int salud;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         if (getIntent().hasExtra("DATA_EMAIL_KEY")){
             email =getIntent().getStringExtra("DATA_EMAIL_KEY");
+            if(getIntent().hasExtra("DATA_HEALTH_KEY")){
+                salud = getIntent().getIntExtra("DATA_HEALTH_KEY", -1);
+                if(salud !=0){
+                    Toast.makeText(this, "estoy enfermo",Toast.LENGTH_LONG).show();
+                    //abrir ventana de que esta enfermo
+                }
+            }
         }
+
     }
 
     public void ventanaInfo(View view){

@@ -13,18 +13,28 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.equipoDinamita.Interface.API;
+import com.equipoDinamita.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText mTextEmail, mTextPassword;
     Button mBSignIn;
     TextView mTForgot, mTRegister;
+    User user;
     private FirebaseAuth mAuth;
+    private static Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://covid-amigo-pds3.herokuapp.com/").addConverterFactory(GsonConverterFactory.create());
+    public static Retrofit retrofit = builder.build();
     //private ProgressBar progressBar;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if(user.isEmailVerified()){
-                        sigV();
+                        getUserHealthAPI();
                     }else{
                         user.sendEmailVerification();
                         Toast.makeText(MainActivity.this, "Verifica tu email!",Toast.LENGTH_LONG).show();
@@ -115,8 +125,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void getUserHealthAPI() {
+        API health = retrofit.create(API.class);
+        retrofit2.Call<User> Call = health.getHealth(mTextEmail.getText().toString());
+        Call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(retrofit2.Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+                    user = response.body();
+                    Toast.makeText(MainActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
+                    sigV();
+                }else{
+                    if(!response.errorBody().toString().isEmpty()){
+                        Toast.makeText(MainActivity.this, "Error de Back-End", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(retrofit2.Call<User> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Error de conexion", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
     public void sigV(){
         Intent sig = new Intent(this, menu.class);
+        sig.putExtra("DATA_HEALTH_KEY",user.getUs_health());
         sig.putExtra("DATA_EMAIL_KEY",mTextEmail.getText().toString());
         startActivity(sig);
     }
