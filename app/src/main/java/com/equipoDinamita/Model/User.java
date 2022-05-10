@@ -1,109 +1,116 @@
 package com.equipoDinamita.Model;
 
 public class User {
-    private String nombre,apellidos,email,foto,covidFechaInicial,getCovidFechaFinal;
-    private int edad,salud,asistencias;
+    private String us_l_name,us_f_name,id_us,us_photo, us_s_symp_period,us_e_symp_period,us_registration_date;
+    private int us_age,us_health,us_assisted;
     public User() { }
 
-    public User(String nombre, String apellidos, String email, String foto, String covidFechaInicial, String getCovidFechaFinal, int edad, int salud, int asistencias) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.email = email;
-        this.foto = foto;
-        this.covidFechaInicial = covidFechaInicial;
-        this.getCovidFechaFinal = getCovidFechaFinal;
-        this.edad = edad;
-        this.salud = salud;
-        this.asistencias = asistencias;
+    public User(String email,String nombre, String apellidos, int edad,  String covidFechaInicial, String getCovidFechaFinal, String registro, String foto,int asistencias,int salud) {
+        this.us_f_name= nombre;
+        this.us_l_name = apellidos;
+        this.id_us = email;
+        this.us_photo= foto;
+        this.us_s_symp_period = covidFechaInicial;
+        this.us_e_symp_period = getCovidFechaFinal;
+        this.us_age= edad;
+        this.us_health = salud;
+        this.us_assisted= asistencias;
+        this.us_registration_date = registro;
     }
 
-    public String getCovidFechaInicial() {
-        return covidFechaInicial;
+    public String getUs_l_name() {
+        return us_l_name;
     }
 
-    public void setCovidFechaInicial(String covidFechaInicial) {
-        this.covidFechaInicial = covidFechaInicial;
+    public void setUs_l_name(String us_l_name) {
+        this.us_l_name = us_l_name;
     }
 
-    public String getGetCovidFechaFinal() {
-        return getCovidFechaFinal;
+    public String getUs_f_name() {
+        return us_f_name;
     }
 
-    public void setGetCovidFechaFinal(String getCovidFechaFinal) {
-        this.getCovidFechaFinal = getCovidFechaFinal;
+    public void setUs_f_name(String us_f_name) {
+        this.us_f_name = us_f_name;
     }
 
-    public int getSalud() {
-        return salud;
+    public String getId_us() {
+        return id_us;
     }
 
-    public void setSalud(int salud) {
-        this.salud = salud;
+    public void setId_us(String id_us) {
+        this.id_us = id_us;
     }
 
-    public int getAsistencias() {
-        return asistencias;
+    public String getUs_photo() {
+        return us_photo;
     }
 
-    public void setAsistencias(int asistencias) {
-        this.asistencias = asistencias;
+    public void setUs_photo(String us_photo) {
+        this.us_photo = us_photo;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getUs_s_symp_period() {
+        return us_s_symp_period;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setUs_s_symp_period(String us_s_symp_period) {
+        this.us_s_symp_period = us_s_symp_period;
     }
 
-
-    public String getNombre() {
-        return nombre;
+    public String getUs_e_symp_period() {
+        return us_e_symp_period;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUs_e_symp_period(String us_e_symp_period) {
+        this.us_e_symp_period = us_e_symp_period;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getUs_registration_date() {
+        return us_registration_date;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setUs_registration_date(String us_registration_date) {
+        this.us_registration_date = us_registration_date;
     }
 
-
-
-    public String getEmail() {
-        return email;
+    public int getUs_age() {
+        return us_age;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUs_age(int us_age) {
+        this.us_age = us_age;
     }
 
-    public String getFoto() {
-        return foto;
+    public int getUs_health() {
+        return us_health;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setUs_health(int us_health) {
+        this.us_health = us_health;
+    }
+
+    public int getUs_assisted() {
+        return us_assisted;
+    }
+
+    public void setUs_assisted(int us_assisted) {
+        this.us_assisted = us_assisted;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", email='" + email + '\'' +
-                ", foto='" + foto + '\'' +
-                ", covidFechaInicial='" + covidFechaInicial + '\'' +
-                ", getCovidFechaFinal='" + getCovidFechaFinal + '\'' +
-                ", edad=" + edad +
-                ", salud=" + salud +
-                ", asistencias=" + asistencias +
+                "us_l_name='" + us_l_name + '\'' +
+                ", us_f_name='" + us_f_name + '\'' +
+                ", id_us='" + id_us + '\'' +
+                ", us_photo='" + us_photo + '\'' +
+                ", us_s_symp_period='" + us_s_symp_period + '\'' +
+                ", us_e_symp_period='" + us_e_symp_period + '\'' +
+                ", us_registration_date='" + us_registration_date + '\'' +
+                ", us_age=" + us_age +
+                ", us_health=" + us_health +
+                ", us_assisted=" + us_assisted +
                 '}';
     }
 }

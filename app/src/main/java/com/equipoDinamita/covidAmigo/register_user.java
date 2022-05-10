@@ -60,9 +60,7 @@ public class register_user extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                user = new User(etName.getText().toString().trim(),etSurname.getText().toString().trim(),etEmail.getText().toString().trim(),
-                        "","","",validarEdad(),0,0);
+                user = new User(etEmail.getText().toString(),etName.getText().toString(),etSurname.getText().toString(),validarEdad(),"","","","",0,0);
                 if(validarCredencciales()){
                     validarfirebase();
                 }
@@ -79,7 +77,7 @@ public class register_user extends AppCompatActivity {
         });
     }
     private void validarfirebase (){
-        mAuth.createUserWithEmailAndPassword(user.getEmail(), etPassword.getText().toString())
+        mAuth.createUserWithEmailAndPassword(user.getId_us(), etPassword.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -92,7 +90,7 @@ public class register_user extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if(task.isSuccessful()){
-                                        registerUserAPI(user.getEmail(),user.getNombre(),user.getApellidos(),user.getEdad(),user.getFoto());
+                                        registerUserAPI(user.getId_us(),user.getUs_f_name(),user.getUs_l_name(),user.getUs_age(),user.getUs_photo());
                                         progressBar.setVisibility(View.VISIBLE);
                                         //Redirct to Login
                                         sigV();
@@ -123,13 +121,13 @@ public class register_user extends AppCompatActivity {
     private Boolean validarCredencciales(){
         Boolean ready=true;
 
-        if((user.getNombre().isEmpty())){
+        if((user.getUs_f_name().isEmpty())){
             this.etName.setError("Su nombre es requerido!");
             this.etName.requestFocus();
             ready = false;
         }
 
-        if(user.getApellidos().isEmpty()){
+        if(user.getUs_l_name().isEmpty()){
             this.etSurname.setError("Sus appellidos son requeridos!");
             this.etSurname.requestFocus();
             ready = false;
@@ -141,20 +139,20 @@ public class register_user extends AppCompatActivity {
             ready = false;
         }
 
-        if(user.getEmail().isEmpty()){
+        if(user.getId_us().isEmpty()){
             this.etEmail.setError("Su correo electronico es requerido!");
             this.etEmail.requestFocus();
             ready = false;
         }
 
-        if(user.getEdad() == 0){
+        if(user.getUs_age() == 0){
             this.etAge.setText("");
             this.etAge.setError("Su edad es requerida!");
             this.etAge.requestFocus();
             ready = false;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(user.getEmail()).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(user.getId_us()).matches()){
             this.etEmail.setError("Por favor introduzca un correo electronico valido");
             this.etEmail.requestFocus();
             ready = false;

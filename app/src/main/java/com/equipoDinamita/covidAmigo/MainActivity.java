@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void sigV(){
         Intent sig = new Intent(this, menu.class);
+        sig.putExtra("DATA_EMAIL_KEY",mTextEmail.getText().toString());
         startActivity(sig);
     }
     public void sigV2(){
