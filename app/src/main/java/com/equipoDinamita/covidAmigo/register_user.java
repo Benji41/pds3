@@ -1,5 +1,6 @@
 package com.equipoDinamita.covidAmigo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,6 +23,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+
 public class register_user extends AppCompatActivity {
 
     Button buttonBack, buttonRegister;
@@ -29,6 +37,9 @@ public class register_user extends AppCompatActivity {
     private static Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://covid-amigo-pds3.herokuapp.com/").addConverterFactory(GsonConverterFactory.create());
     public static Retrofit retrofit = builder.build();
     private User user;
+    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
@@ -42,6 +53,10 @@ public class register_user extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.pass);
         etPassword2 = (EditText) findViewById(R.id.pass2);
 
+        mAuth = FirebaseAuth.getInstance();
+        progressBar = (ProgressBar)  findViewById(R.id.progressBar);
+
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +64,7 @@ public class register_user extends AppCompatActivity {
                 user = new User(etName.getText().toString().trim(),etSurname.getText().toString().trim(),etEmail.getText().toString().trim(),
                         "","","",validarEdad(),0,0);
                 if(validarCredencciales()){
-                    registerUserAPI(user.getEmail(),user.getNombre(),user.getApellidos(),user.getEdad(),user.getFoto());
+                    validarfirebase();
                 }
 
             }
@@ -63,6 +78,43 @@ public class register_user extends AppCompatActivity {
             }
         });
     }
+    private void validarfirebase (){
+        mAuth.createUserWithEmailAndPassword(user.getEmail(), etPassword.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if(task.isSuccessful()){
+                           // User User= new User(name, lastName, age, email);
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if(task.isSuccessful()){
+                                        registerUserAPI(user.getEmail(),user.getNombre(),user.getApellidos(),user.getEdad(),user.getFoto());
+                                        progressBar.setVisibility(View.VISIBLE);
+
+                                        //Redirct to Login
+                                            sigV();
+                                    }else{
+                                        Toast.makeText(register_user.this, "Fallo al registrar! Intenta de nuevo ", Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+
+                            });
+
+                        }else{
+                            Toast.makeText(register_user.this, "Fallo al registrar! Intento ", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+    }
+
     private int validarEdad(){
         if (etAge.getText().toString().isEmpty()) {
             return 0;
