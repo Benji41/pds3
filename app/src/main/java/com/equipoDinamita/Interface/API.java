@@ -18,12 +18,10 @@ public interface API {
     @POST("/registrarUsuario")
     Call<User> insertUser(@Field("id") String email, @Field("name") String first, @Field("surNames") String last, @Field("age") int age, @Field("picture") String foto);
 
-   /* @GET("/eventos")
-    Call<List<Event>> getEventos(@Query("id") String id);*/
+    @GET("/perfil")
+    Call<User> getProfile(@Query("id") String id);
 
     /*@GET("/eventomedida")
     Call<List<Medida>> getMedidasEventos(@Query("id_evento") int id);*/
 
-    @GET("/eventohost")
-    Call<User> getHostEventos(@Query("id_evento") int id);
 }
