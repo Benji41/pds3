@@ -55,7 +55,7 @@ public class register_user extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         progressBar = (ProgressBar)  findViewById(R.id.progressBar);
-
+        progressBar.setVisibility(View.GONE);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +85,6 @@ public class register_user extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-                           // User User= new User(name, lastName, age, email);
-
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -96,9 +94,8 @@ public class register_user extends AppCompatActivity {
                                     if(task.isSuccessful()){
                                         registerUserAPI(user.getEmail(),user.getNombre(),user.getApellidos(),user.getEdad(),user.getFoto());
                                         progressBar.setVisibility(View.VISIBLE);
-
                                         //Redirct to Login
-                                            sigV();
+                                        sigV();
                                     }else{
                                         Toast.makeText(register_user.this, "Fallo al registrar! Intenta de nuevo ", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
@@ -106,15 +103,16 @@ public class register_user extends AppCompatActivity {
                                 }
 
                             });
-
                         }else{
-                            Toast.makeText(register_user.this, "Fallo al registrar! Intento ", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                            if(task.getException().toString().contains(" The email address is already in use by another account.")){
+                                System.out.println(task.getException());
+                                Toast.makeText(register_user.this, "\n ERROR! \n Algo salio mal, intente de nuevo!", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
                         }
                     }
                 });
     }
-
     private int validarEdad(){
         if (etAge.getText().toString().isEmpty()) {
             return 0;
