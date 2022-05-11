@@ -25,7 +25,6 @@ public class epd extends AppCompatActivity{
         button = findViewById(R.id.regresar);
         listview = findViewById(R.id.lv);
 
-
         eventos = new ArrayList<String>();
         eventos.add("EVENTO1");
         eventos.add("EVENTO2");

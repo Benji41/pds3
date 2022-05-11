@@ -23,7 +23,6 @@ public class qr extends AppCompatActivity {
 
         button = findViewById(R.id.button2);
 
-
         generarQR("x"); //En lugar de "x", debe ir la cadena que se pasa.
 
 
