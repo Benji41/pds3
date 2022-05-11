@@ -100,6 +100,7 @@ public class menu extends AppCompatActivity {
             @Override
             public void onResponse(retrofit2.Call<List<User>> call, Response<List<User>> response) {
                 if(response.isSuccessful()){
+                    Toast.makeText(menu.this, response.body().toString(), Toast.LENGTH_LONG).show();
                     userListsPrevious = response.body();
                 }else{
                     if(!response.errorBody().toString().isEmpty()){
@@ -109,11 +110,12 @@ public class menu extends AppCompatActivity {
             }
             @Override
             public void onFailure(retrofit2.Call<List<User>> call, Throwable t) {
-                Toast.makeText(menu.this, "Error de conexion", Toast.LENGTH_LONG).show();
+                Toast.makeText(menu.this, "previos "+call+" "+t, Toast.LENGTH_LONG).show();
+                System.out.println(call+" "+t.toString());
             }
         });
 
-        Call<List<User>> Call2 = alert.getAttendesUpcomingEvents(email);
+       Call<List<User>> Call2 = alert.getAttendesUpcomingEvents(email);
         Call2.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(retrofit2.Call<List<User>> call, Response<List<User>> response) {
@@ -128,7 +130,7 @@ public class menu extends AppCompatActivity {
             }
             @Override
             public void onFailure(retrofit2.Call<List<User>> call, Throwable t) {
-                Toast.makeText(menu.this, "Error de conexion", Toast.LENGTH_LONG).show();
+                Toast.makeText(menu.this, "proximos "+call+" "+t, Toast.LENGTH_LONG).show();
             }
         });
         System.out.println(userListsPrevious+" "+userListsUpcoming);
