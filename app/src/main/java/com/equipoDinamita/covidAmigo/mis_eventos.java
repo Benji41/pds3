@@ -11,7 +11,7 @@ import android.widget.RadioButton;
 public class mis_eventos extends AppCompatActivity {
 
     RadioButton r1,r2;
-    Button buttonRegresar;
+    Button buttonRegresar,buttonRegistrarEvento;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_eventos);
@@ -20,6 +20,16 @@ public class mis_eventos extends AppCompatActivity {
         r2 =  findViewById(R.id.r2);
 
         buttonRegresar = findViewById(R.id.regresar);
+        buttonRegistrarEvento = findViewById(R.id.registrarEvento);
+
+        buttonRegistrarEvento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                re();
+
+            }
+        });
 
         if (r1.isChecked()){
 
@@ -46,6 +56,10 @@ public class mis_eventos extends AppCompatActivity {
 
     public void sigV(){
         Intent i = new Intent(this, menu.class);
+        startActivity(i);
+    }
+    public void re(){
+        Intent i = new Intent(this, registrar_evento.class);
         startActivity(i);
     }
 }
