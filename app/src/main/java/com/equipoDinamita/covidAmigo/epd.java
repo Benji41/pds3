@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.equipoDinamita.Interface.API;
 import com.equipoDinamita.Model.Evento;
+import com.equipoDinamita.Model.Medida;
 import com.equipoDinamita.Model.User;
 
 import java.util.ArrayList;
@@ -33,8 +34,11 @@ public class epd extends AppCompatActivity{
     ListView listview;
     List<Evento> eventos;
     String email;
-    private static Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://covid-amigo-pds3.herokuapp.com/").addConverterFactory(GsonConverterFactory.create());
-    public static Retrofit retrofit = builder.build();
+    String measuresS = "";
+    AlertDialog.Builder builder;
+    CharSequence[] dialogItem;
+    private static Retrofit.Builder builderR = new Retrofit.Builder().baseUrl("https://covid-amigo-pds3.herokuapp.com/").addConverterFactory(GsonConverterFactory.create());
+    public static Retrofit retrofit = builderR.build();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_epd);
@@ -81,20 +85,10 @@ public class epd extends AppCompatActivity{
 
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                            measuresS = "";
+                            builder = new AlertDialog.Builder(view.getContext());
+                            getMeasuresEvent(eventos.get(position).getId_ev(),position);
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                            CharSequence[] dialogItem = {"Descripcion: " + eventos.get(position).getEv_desc() + '\n' + "Fecha: " + eventos.get(position).getEv_date() + '\n' + "Direccion: "
-                                    + eventos.get(position).getEv_loc() + '\n' + "Entorno: " + checarEntorno(eventos.get(position).getEv_enviro())  + '\n' + "Foro: " + eventos.get(position).getEv_cap() +
-                                    '\n' + "Estado: " + checarEstado(eventos.get(position).getEv_status()), "Asistir"};
-                            builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int i) {
-                                    //Intent intent = new Intent(getApplicationContext(), Formulario.class);
-                                    //intent.putExtra("correoUs",correo);
-                                    //startActivity(intent);
-                                }
-                            });
-                            builder.create().show();
                         }
                     });
                 }else{
@@ -109,7 +103,60 @@ public class epd extends AppCompatActivity{
             }
         });
     }
+    private void getMeasuresEvent(int id_ev,int position){
 
+        API measures = retrofit.create(API.class);
+        retrofit2.Call<List<Medida>> Call = measures.medidasEventos(id_ev);
+        Call.enqueue(new Callback<List<Medida>>() {
+            @Override
+            public void onResponse(retrofit2.Call<List<Medida>> call, Response<List<Medida>> response) {
+                if (response != null){
+                    for (int i = 0; i < response.body().size(); i++) {
+                            measuresS+="\n"+(i+1)+". "+response.body().get(i).getMe_desc();
+                    }
+                    if(!measuresS.isEmpty()){
+                       dialogItem = new CharSequence[]{"Descripcion: " + eventos.get(position).getEv_desc() + '\n' + "Fecha: " + eventos.get(position).getEv_date() + '\n' + "Direccion: "
+                               + eventos.get(position).getEv_loc() + '\n' + "Entorno: " + checarEntorno(eventos.get(position).getEv_enviro()) + '\n' + "Foro: " + eventos.get(position).getEv_cap() +
+                               '\n' + "Estado: " + checarEstado(eventos.get(position).getEv_status()) + '\n' + "Medidas sanitarias: " + measuresS, "Asistir"};
+
+                    }
+                }else{
+                    if(!response.errorBody().toString().isEmpty()){
+                        Toast.makeText(epd.this, response.body().toString(), Toast.LENGTH_LONG).show();
+                    }
+                }
+                builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        Intent intent = new Intent(getApplicationContext(), cuestionario.class);
+                        intent.putExtra("DATA_EMAIL_KEY",email);
+                        intent.putExtra("DATA_EVENT_KEY",eventos.get(position).getId_ev());
+                        startActivity(intent);
+                    }
+                });
+                builder.create().show();
+            }
+            @Override
+            public void onFailure(retrofit2.Call<List<Medida>> call, Throwable t) {
+                    dialogItem = new CharSequence[]{"Descripcion: " + eventos.get(position).getEv_desc() + '\n' + "Fecha: " + eventos.get(position).getEv_date() + '\n' + "Direccion: "
+                            + eventos.get(position).getEv_loc() + '\n' + "Entorno: " + checarEntorno(eventos.get(position).getEv_enviro())  + '\n' + "Foro: " + eventos.get(position).getEv_cap() +
+                            '\n' + "Estado: " + checarEstado(eventos.get(position).getEv_status())+'\n' + "Medidas sanitarias: No hay medidas disponibles", "Asistir"};
+
+                builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        Intent intent = new Intent(getApplicationContext(), cuestionario.class);
+                        intent.putExtra("DATA_EMAIL_KEY",email);
+                        intent.putExtra("DATA_EVENT_KEY",eventos.get(position).getId_ev());
+                        startActivity(intent);
+                    }
+                });
+                builder.create().show();
+
+            }
+        });
+
+    }
     private String checarEntorno(int entorno){
         if(entorno==0){
             return "Lugar abierto";

@@ -1,7 +1,9 @@
 package com.equipoDinamita.Interface;
 
 import com.equipoDinamita.Model.Evento;
+import com.equipoDinamita.Model.Medida;
 import com.equipoDinamita.Model.User;
+import com.equipoDinamita.Model.eventoUsuario;
 
 import java.util.List;
 
@@ -35,6 +37,11 @@ public interface API {
     Call<List<User>> getAttendesUpcomingEvents(@Field("id_email") String id);
     @GET("/eventos")
     Call<List<Evento>> eventos(@Query("id") String id);
-
+    @GET("/eventoMedidas")
+    Call<List<Medida>> medidasEventos(@Query("id_ev") int id_ev);
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @FormUrlEncoded
+    @POST("/registrarEventoUsuario")
+    Call<eventoUsuario> registrarEventoUsuario(@Field("id") String email, @Field("id_ev") int id_ev);
 
 }
