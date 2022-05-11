@@ -12,4 +12,7 @@
     <string name="p4">¿Ha sentido dolor de garganta?</string>
     <string name="p5">¿Ha sentido pérdida del olfato?</string>
     <string name="au">Acerca del equipo</string>
+    <string name="correo">Correo</string>
+    <string name="nombre">Nombre</string>
+    <string name="bienvenido">Bienvenido!</string>
 </resources>
