@@ -13,6 +13,9 @@ import android.widget.Toast;
 import com.equipoDinamita.Interface.API;
 import com.equipoDinamita.Model.User;
 
+import java.util.List;
+
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -23,6 +26,8 @@ public class menu extends AppCompatActivity {
     String email;
     int salud;
     User user;
+    List<User> userListsPrevious;
+    List<User> userListsUpcoming;
     AlertDialog.Builder builderDialog;
     DialogInterface.OnClickListener dialogClickListener;
     private static Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://covid-amigo-pds3.herokuapp.com/").addConverterFactory(GsonConverterFactory.create());
@@ -75,8 +80,7 @@ public class menu extends AppCompatActivity {
                 if(response.isSuccessful()){
                     user = response.body();
                     if(user.getUs_health()==1){
-                        //mandar notificar a los demas
-                        System.out.println(user.getId_us());
+                        alert(block);
                     }
                 }else{
                     if(!response.errorBody().toString().isEmpty()){
@@ -89,6 +93,44 @@ public class menu extends AppCompatActivity {
                 Toast.makeText(menu.this, "Error de conexion", Toast.LENGTH_LONG).show();
             }
         });
+    }
+    private void alert(API alert){
+        Call<List<User>> Call = alert.getAttendesEvents(email);
+        Call.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(retrofit2.Call<List<User>> call, Response<List<User>> response) {
+                if(response.isSuccessful()){
+                    userListsPrevious = response.body();
+                }else{
+                    if(!response.errorBody().toString().isEmpty()){
+                        Toast.makeText(menu.this, "Error de Back-End", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(retrofit2.Call<List<User>> call, Throwable t) {
+                Toast.makeText(menu.this, "Error de conexion", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Call<List<User>> Call2 = alert.getAttendesUpcomingEvents(email);
+        Call2.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(retrofit2.Call<List<User>> call, Response<List<User>> response) {
+                if(response.isSuccessful()){
+                    userListsUpcoming = response.body();
+                }else{
+                    if(!response.errorBody().toString().isEmpty()){
+                        Toast.makeText(menu.this, "Error de Back-End", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(retrofit2.Call<List<User>> call, Throwable t) {
+                Toast.makeText(menu.this, "Error de conexion", Toast.LENGTH_LONG).show();
+            }
+        });
+        System.out.println(userListsPrevious+" "+userListsUpcoming);
     }
     public void ventanaInfo(View view){
 
