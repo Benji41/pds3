@@ -32,12 +32,8 @@ public class epd extends AppCompatActivity{
         eventos.add("EVENTO3");
 
 
-
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, eventos);
         listview.setAdapter(adapter);
-
-
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
