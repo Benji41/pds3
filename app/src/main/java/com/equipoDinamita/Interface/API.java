@@ -26,7 +26,10 @@ public interface API {
     @FormUrlEncoded
     @PUT("/bloquearUsuario")
     Call<User> blockUser(@Field("id") String id);
-    /*@GET("/eventomedida")
-    Call<List<Medida>> getMedidasEventos(@Query("id_evento") int id);*/
-
+    @GET("/obtenerAsistentes")
+    Call<List<User>> getAttendesEvents(@Query("id") String id);
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @FormUrlEncoded
+    @PUT("/cancelarEventosProximosObtenerAsistentes")
+    Call<List<User>> getAttendesUpcomingEvents(@Field("id") String id);
 }
