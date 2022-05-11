@@ -1,5 +1,6 @@
 package com.equipoDinamita.Interface;
 
+import com.equipoDinamita.Model.Evento;
 import com.equipoDinamita.Model.User;
 
 import java.util.List;
@@ -32,4 +33,8 @@ public interface API {
     @FormUrlEncoded
     @PUT("/cancelarEventosProximosObtenerAsistentes")
     Call<List<User>> getAttendesUpcomingEvents(@Field("id_email") String id);
+    @GET("/eventos")
+    Call<List<Evento>> eventos(@Query("id") String id);
+
+
 }
