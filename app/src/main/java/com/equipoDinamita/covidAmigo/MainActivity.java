@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     sigV();
                 }else{
                     if(!response.errorBody().toString().isEmpty()){
-                        Toast.makeText(MainActivity.this, "Error de Back-End", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
