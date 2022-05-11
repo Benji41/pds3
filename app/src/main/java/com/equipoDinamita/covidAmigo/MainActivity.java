@@ -28,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    int salud;
     EditText mTextEmail, mTextPassword;
     Button mBSignIn;
     TextView mTForgot, mTRegister;
@@ -55,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         mBSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
                 userLogin();
+
             }
         });
 
@@ -70,14 +73,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
         if(getIntent().getBooleanExtra("EXIT",false)){
             finish();
         }
 
     }
-    private void userLogin() {
+
+
+    public void userLogin() {
         String email = mTextEmail.getText().toString().trim();
         String password = mTextPassword.getText().toString().trim();
 
@@ -124,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
     }
     private void getUserHealthAPI() {
         API health = retrofit.create(API.class);
@@ -148,10 +155,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void sigV(){
-        Intent sig = new Intent(this, menu.class);
-        sig.putExtra("DATA_HEALTH_KEY",user.getUs_health());
-        sig.putExtra("DATA_EMAIL_KEY",mTextEmail.getText().toString());
-        startActivity(sig);
+
+        Intent sig;
+
+        if (user.getUs_health() != 0){
+            sig= new Intent(this, bloq.class);
+            startActivity(sig);
+        }else{
+            sig = new Intent(this, menu.class);
+            sig.putExtra("DATA_HEALTH_KEY",user.getUs_health());
+            sig.putExtra("DATA_EMAIL_KEY",mTextEmail.getText().toString());
+            startActivity(sig);
+        }
+
     }
     public void sigV2(){
         Intent sig = new Intent(this, forgot_password.class);
