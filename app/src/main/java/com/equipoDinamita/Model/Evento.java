@@ -3,11 +3,12 @@ package com.equipoDinamita.Model;
 public class Evento {
 
     private String ev_name,ev_desc,ev_date,ev_loc,ev_host;
-    private int ev_cap,ev_enviro,ev_conf_inv,ev_status,ev_min_age;
+    private int id_ev,ev_cap,ev_enviro,ev_conf_inv,ev_status,ev_min_age;
 
     public Evento() { }
 
-    public Evento(String nombre, String descripcion, String fecha, String lugar, int capacidad, int cerrado_abierto, int invitados_confirmados, int status, int edad_minima, String email_host) {
+    public Evento(int id,String nombre, String descripcion, String fecha, String lugar, int capacidad, int cerrado_abierto, int invitados_confirmados, int status, int edad_minima, String email_host) {
+        this.id_ev = id;
         this.ev_name = nombre;
         this.ev_desc = descripcion;
         this.ev_date = fecha;
@@ -18,6 +19,14 @@ public class Evento {
         this.ev_status = status;
         this.ev_min_age = edad_minima;
         this.ev_host = email_host;
+    }
+
+    public int getId_ev() {
+        return id_ev;
+    }
+
+    public void setId_ev(int id_ev) {
+        this.id_ev = id_ev;
     }
 
     public String getEv_name(){return ev_name;}
@@ -52,19 +61,18 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Evento{" +
                 "ev_name='" + ev_name + '\'' +
                 ", ev_desc='" + ev_desc + '\'' +
                 ", ev_date='" + ev_date + '\'' +
                 ", ev_loc='" + ev_loc + '\'' +
-                ", ev_cap='" + ev_cap + '\'' +
-                ", ev_enviro='" + ev_enviro + '\'' +
-                ", ev_conf_Inv='" + ev_conf_inv + '\'' +
+                ", ev_host='" + ev_host + '\'' +
+                ", id_ev=" + id_ev +
+                ", ev_cap=" + ev_cap +
+                ", ev_enviro=" + ev_enviro +
+                ", ev_conf_inv=" + ev_conf_inv +
                 ", ev_status=" + ev_status +
-                ", ev_min_age" + ev_min_age +
-                ", ev_host=" + ev_host +
+                ", ev_min_age=" + ev_min_age +
                 '}';
     }
-
-
 }
